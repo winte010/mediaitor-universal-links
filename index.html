@@ -3,66 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediAItor Universal Links</title>
+    <title>MediAItor - Email Verification</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            line-height: 1.6;
-            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
         }
         h1 {
-            color: #2563eb;
+            color: #1a202c;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
-        .status {
-            background: #f0f9ff;
-            border-left: 4px solid #2563eb;
-            padding: 15px;
-            margin: 20px 0;
+        .subtitle {
+            color: #718096;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
-        .link {
-            color: #2563eb;
+        .success-message {
+            background: #f0fdf4;
+            border: 2px solid #86efac;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .success-message p {
+            color: #166534;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
         }
-        .link:hover {
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .help-text {
+            color: #718096;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .app-store-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .app-store-link:hover {
             text-decoration: underline;
         }
-        code {
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
     </style>
+    <script>
+        // Try to open the app automatically when page loads
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const type = urlParams.get('type');
+
+            if (code) {
+                // Construct the deep link
+                const deepLink = `mediaitor://auth/callback?code=${code}&type=${type || 'signup'}`;
+
+                // Try to open the app
+                window.location.href = deepLink;
+
+                // Show success message after a short delay
+                setTimeout(() => {
+                    document.getElementById('auto-open-message').style.display = 'block';
+                }, 1000);
+            }
+        };
+
+        function openApp() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const type = urlParams.get('type');
+
+            if (code) {
+                const deepLink = `mediaitor://auth/callback?code=${code}&type=${type || 'signup'}`;
+                window.location.href = deepLink;
+            } else {
+                // Fallback if no code
+                window.location.href = 'mediaitor://';
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>MediAItor Universal Links</h1>
+    <div class="container">
+        <div class="icon">✅</div>
+        <h1>Email Verified!</h1>
+        <p class="subtitle">Your email has been successfully verified</p>
 
-    <div class="status">
-        <p><strong>Status:</strong> Active</p>
-        <p>This domain hosts the universal links configuration for the MediAItor mobile application.</p>
+        <div class="success-message">
+            <p><strong>You're all set!</strong></p>
+            <p>Click the button below to open MediAItor and start using your account.</p>
+        </div>
+
+        <a href="#" onclick="openApp(); return false;" class="button">
+            Open MediAItor App
+        </a>
+
+        <div id="auto-open-message" style="display: none;">
+            <p class="help-text">
+                The app should have opened automatically. If not, click the button above.
+            </p>
+        </div>
+
+        <p class="help-text">
+            Don't have the app installed?<br>
+            <a href="#" class="app-store-link">Download from App Store</a> |
+            <a href="#" class="app-store-link">Get it on Google Play</a>
+        </p>
     </div>
-
-    <h2>Configuration Files</h2>
-    <ul>
-        <li><a href="/.well-known/apple-app-site-association" class="link">Apple App Site Association (iOS)</a></li>
-        <li><a href="/.well-known/assetlinks.json" class="link">Digital Asset Links (Android)</a></li>
-    </ul>
-
-    <h2>About MediAItor</h2>
-    <p>MediAItor is an AI-powered mediation platform that helps parties resolve conflicts through intelligent facilitation.</p>
-
-    <h2>Application Details</h2>
-    <ul>
-        <li><strong>iOS Bundle ID:</strong> <code>com.junotech.mediaitor</code></li>
-        <li><strong>Android Package:</strong> <code>com.junotech.mediaitor</code></li>
-        <li><strong>Domain:</strong> <code>mediaitor.junotech.app</code></li>
-    </ul>
-
-    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 14px;">
-        <p>&copy; 2025 JunoTech. All rights reserved.</p>
-    </footer>
 </body>
 </html>
