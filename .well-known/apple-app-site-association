@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.junotech.mediaitor",
+        "appIDs": ["TEAMID.com.junotech.mediaitor"],
+        "components": [
+          {
+            "/": "/auth/*",
+            "comment": "Matches all authentication callback URLs"
+          }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["TEAMID.com.junotech.mediaitor"]
+  }
+}
