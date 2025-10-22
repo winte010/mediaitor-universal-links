@@ -3,18 +3,22 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.junotech.mediaitor",
-        "appIDs": ["TEAMID.com.junotech.mediaitor"],
+        "appID": "YPP39DXHU9.app.junotech.mediaitor",
+        "appIDs": ["YPP39DXHU9.app.junotech.mediaitor"],
         "components": [
           {
+            "/": "/invite/*",
+            "comment": "Matches invitation links"
+          },
+          {
             "/": "/auth/*",
-            "comment": "Matches all authentication callback URLs"
+            "comment": "Matches authentication callback URLs"
           }
         ]
       }
     ]
   },
   "webcredentials": {
-    "apps": ["TEAMID.com.junotech.mediaitor"]
+    "apps": ["YPP39DXHU9.app.junotech.mediaitor"]
   }
 }
