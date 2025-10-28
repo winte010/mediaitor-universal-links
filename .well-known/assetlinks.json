@@ -5,8 +5,7 @@
       "namespace": "android_app",
       "package_name": "app.junotech.mediaitor",
       "sha256_cert_fingerprints": [
-        "PLACEHOLDER_DEBUG_FINGERPRINT",
-        "PLACEHOLDER_RELEASE_FINGERPRINT"
+        "B1:0B:3E:40:B1:FA:56:CB:E8:34:31:C8:6D:4E:8B:09:46:B9:E8:03:73:E9:5F:2D:C9:95:04:F8:98:8B:B9:B1"
       ]
     }
   }

@@ -7,12 +7,12 @@
         "appIDs": ["YPP39DXHU9.app.junotech.mediaitor"],
         "components": [
           {
-            "/": "/invite/*",
-            "comment": "Matches invitation links"
+            "/": "/auth/*",
+            "comment": "Matches all authentication callback URLs"
           },
           {
-            "/": "/auth/*",
-            "comment": "Matches authentication callback URLs"
+            "/": "/invite/*",
+            "comment": "Matches invitation links"
           }
         ]
       }
