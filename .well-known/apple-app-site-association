@@ -4,21 +4,17 @@
     "details": [
       {
         "appID": "YPP39DXHU9.app.junotech.mediaitor",
-        "appIDs": ["YPP39DXHU9.app.junotech.mediaitor"],
-        "components": [
-          {
-            "/": "/auth/*",
-            "comment": "Matches all authentication callback URLs"
-          },
-          {
-            "/": "/invite/*",
-            "comment": "Matches invitation links"
-          }
+        "paths": [
+          "/invite/*",
+          "/invitation/*",
+          "/auth/*"
         ]
       }
     ]
   },
   "webcredentials": {
-    "apps": ["YPP39DXHU9.app.junotech.mediaitor"]
+    "apps": [
+      "YPP39DXHU9.app.junotech.mediaitor"
+    ]
   }
 }
